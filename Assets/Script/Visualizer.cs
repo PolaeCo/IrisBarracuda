@@ -1,11 +1,14 @@
 using UnityEngine;
 using UI = UnityEngine.UI;
 using System.Linq;
+using System.IO;
 
 namespace MediaPipe.Iris {
 
+
 public sealed class Visualizer : MonoBehaviour
 {
+
     #region Editable attributes
 
     [SerializeField] Texture2D _image = null;
@@ -45,8 +48,23 @@ public sealed class Visualizer : MonoBehaviour
 
     #region MonoBehaviour implementation
 
+    // public static Texture2D LoadPNG(string filePath) {
+ 
+    //     Texture2D tex = null;
+    //     byte[] fileData;
+    
+    //     if (File.Exists(filePath))     {
+    //         fileData = File.ReadAllBytes(filePath);
+    //         tex = new Texture2D(2, 2);
+    //         tex.LoadImage(fileData); //..this will auto-resize the texture dimensions.
+    //     }
+    //     return tex;
+    // }
+
     void Start()
     {
+        // _image = LoadPNG("Assets/Image/Test1.jpg");
+
         _detector = new EyeLandmarkDetector(_resources);
         _material = new Material(_shader);
         _markers = Enumerable.Range(0, 5)
